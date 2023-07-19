@@ -58,19 +58,22 @@ from typing import Callable
 
 
 def messager(func: Callable) -> Callable:
-    def inner(*args, **kwargs):
+    c = 1
+    def inner_msg_1(*args, **kwargs):
         print("Sample Text")
         return func(*args, **kwargs)
-    return inner
+    return inner_msg_1
 
 
 def messager_2(func: Callable) -> Callable:
-    def inner(*args, **kwargs):
+    c = 1
+    def inner_msg_2(*args, **kwargs):
         print("ABC")
         return func(*args, **kwargs)
-    return inner
+    return inner_msg_2
 
 
+c = 1
 @messager_2
 @messager
 def summarizer(a, b):
