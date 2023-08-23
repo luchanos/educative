@@ -52,3 +52,14 @@ def random_divider(low_range: int = 0, high_range: int = 2):
 
 
 print(random_divider())
+
+
+
+
+
+
+
+
+
+
+
