@@ -62,7 +62,7 @@ def cache_with_timer_autoclean_cache(func: Callable) -> Callable:
     return inner
 
 
-def cache_with_timer_autoclean_cache_parametrized(expiry_time: int):
+def cache_with_timer_autoclean_cache_parametrized(expiry_time: int) -> Callable:
     def outer(func: Callable) -> Callable:
         cache_dict = {}
 
