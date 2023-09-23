@@ -3,6 +3,40 @@ from typing import Callable, Any
 import logging
 from random import randint
 from datetime import datetime
+from flask import Flask
+import telebot
+from telebot.types import Message
+
+# flask example
+app = Flask("test_app_name")
+
+
+@app.route("/")
+def hello():
+    return "123"
+
+
+app.run()
+
+# telebot example
+
+
+bot = telebot.TeleBot("")
+
+
+@bot.message_handler(commands=["start", ])
+def simple_handler(message: Message):
+    print("Hello")
+
+
+
+
+
+
+
+
+
+
 
 
 def retry(attempts: int, exceptions_for_handling: tuple):
@@ -52,14 +86,3 @@ def random_divider(low_range: int = 0, high_range: int = 2):
 
 
 print(random_divider())
-
-
-
-
-
-
-
-
-
-
-
