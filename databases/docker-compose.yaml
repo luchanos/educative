@@ -1,0 +1,18 @@
+services:
+  postgres_db:
+    image: postgres:latest
+    env_file: .env
+    healthcheck:
+      test: "pg_isready -h postgres_db"
+      interval: 5s
+      timeout: 10s
+      retries: 120
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - common
+networks:
+  common:
