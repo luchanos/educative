@@ -45,9 +45,9 @@ def save_transcription_to_file(transcription: str, txt_path: str) -> None:
         f.write(transcription)
 
 
-video_path = "lection.mp4"
-audio_path = "extracted_audio.wav"
-txt_path = "transcription.txt"
+video_path = ""
+audio_path = ""
+txt_path = ""
 
 if __name__ == "__main__":
     extract_audio_from_video(video_path, audio_path)
