@@ -1,14 +1,3 @@
-CREATE TABLE accounts(
-	id serial,
-	owner varchar(255) unique,
-	balance float
-);
-INSERT INTO accounts (owner, balance) VALUES 
-('alice', 100.0),
-('bob', 50.0);
-SELECT * FROM accounts;
-
-
 -- READ UNCOMMITTED
 BEGIN TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 -- go to session 2 and start the transaction
