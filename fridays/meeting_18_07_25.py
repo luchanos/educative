@@ -88,8 +88,8 @@
 # t1.join()
 # t2.join()
 
-# # # Barrier
-#
+# # Barrier
+
 # import time
 # import random
 # import threading
