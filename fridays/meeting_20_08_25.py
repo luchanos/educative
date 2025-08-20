@@ -1,32 +1,32 @@
-# class LoggedAttribute:
-#     def __init__(self):
-#         self.overrided = False
-#
-#     def __set_name__(self, owner, name):
-#         self.private_name = '_' + name
-#
-#     def __get__(self, instance, owner):
-#         return getattr(instance, self.private_name, None)
-#
-#     def __set__(self, instance, value, *args, **kwargs):
-#         if self.overrided:
-#             print(f"Попытка переопределить {self.private_name} в {value}")
-#             raise Exception('Unable to override!')
-#         self.overrided = True
-#         print(f"Установка {self.private_name} в {value}")
-#         setattr(instance, self.private_name, value)
-#
-# class User:
-#     name: str = LoggedAttribute()
-#     age: int = LoggedAttribute()
-#
-#     def __init__(self, name, age):
-#         self.name = name
-#         self.age = age
-#
-# u = User("Katya", 30)
-# u.name = "Katyuha"  # Логируется изменение
-# u.age = 31  # Логируется изменение
+class LoggedAttribute:
+    def __init__(self):
+        self.overrided = False
+
+    def __set_name__(self, owner, name):
+        self.private_name = '_' + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.private_name, None)
+
+    def __set__(self, instance, value):
+        if self.overrided:
+            print(f"Попытка переопределить {self.private_name} в {value}")
+            raise Exception('Unable to override!')
+        self.overrided = True
+        print(f"Установка {self.private_name} в {value}")
+        setattr(instance, self.private_name, value)
+
+class User:
+    name: str = LoggedAttribute()
+    age: int = LoggedAttribute()
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+u = User("Katya", 30)
+u.name = "Katyuha"  # Логируется изменение
+u.age = 31  # Логируется изменение
 
 
 class Singleton:
