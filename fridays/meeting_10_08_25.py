@@ -1,4 +1,4 @@
-# """По мотивам https://habr.com/ru/companies/otus/articles/801595/"""
+# # """По мотивам https://habr.com/ru/companies/otus/articles/801595/"""
 #
 # class Descriptor:
 #     def __get__(self, instance, owner):
@@ -16,7 +16,8 @@
 #
 #
 # my_object = MyClass(1)
-# print(MyClass(100).attr)  # выведет 'значение'
+# # print(my_object.attr)  # выведет 'значение'
+# print(MyClass.attr)  # выведет 'значение'
 
 
 # class Descriptor:
@@ -25,6 +26,7 @@
 #         self.value = value
 #
 #     def __get__(self, instance, owner):
+#         print(id(self))
 #         print("Логирование получения значения value")
 #         return self.value
 #
@@ -40,30 +42,30 @@
 #         self.attr_2 = attr_2
 #
 # my_object = MyClass(100)
-# my_object.attr = 10  # выведет 'Установка значения 10'
+# # my_object.attr = 10  # выведет 'Установка значения 10'
 # print(my_object.attr)
 # del my_object.attr
-# c = 1
+# # c = 1
 
 
-# class Descriptor:
-#     def __set_name__(self, owner, name):
-#         self.public_name = name
-#         self.private_name = '_' + name
-#
-#     def __get__(self, instance, owner):
-#         return getattr(instance, self.private_name, 'еще не установлено')
-#
-#     def __set__(self, instance, value):
-#         setattr(instance, self.private_name, value)
-#
-# class MyClass:
-#     attr = Descriptor()
-#
-# my_object = MyClass()
-# print(my_object.attr)  # выведет 'еще не установлено'
-# my_object.attr = 99
-# print(my_object.attr)  # выведет 99
+class Descriptor:
+    def __set_name__(self, owner, name):
+        self.public_name = name
+        self.private_name = '_' + name
+
+    def __get__(self, instance, owner):
+        return getattr(instance, self.private_name, 'еще не установлено')
+
+    def __set__(self, instance, value):
+        setattr(instance, self.private_name, value)
+
+class MyClass:
+    attr = Descriptor()
+
+my_object = MyClass()
+print(my_object.attr)  # выведет 'еще не установлено'
+my_object.attr = 99
+print(my_object.attr)  # выведет 99
 
 import time
 
